@@ -1,17 +1,16 @@
-import template from './header.html'
-import styles from './styles.scss'
+import template from './header.component.html';
+import './header.component.scss';
 
 import { COMPANY_NAME } from '../../../constants/constants'
 
-class controller {
+class Controller {
     /** @ngInject */
     constructor() {
-        this.styles = styles;
         this.name = COMPANY_NAME;
     }
 }
 
 export default {
     template,
-    controller
+    controller: Controller
 };

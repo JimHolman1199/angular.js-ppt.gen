@@ -1,0 +1,15 @@
+<div>
+  <app-header></app-header>
+  <div class="container minHeight" role="main">
+    <div ui-view class="flex">
+      <h1>Download presentation</h1>
+      <button class="btn btn-success expand-right ladda-button"
+              ng-class="{'loading': $ctrl.loading}"
+              ng-click="$ctrl.onGenerateFile()">
+        <span class="label">Download PPT file</span>
+        <span class="spinner"></span>
+      </button>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

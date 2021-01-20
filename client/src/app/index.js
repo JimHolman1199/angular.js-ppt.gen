@@ -2,7 +2,6 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngAnimate from 'angular-animate';
 import ngTouch from 'angular-touch';
-import uiBootstrap from 'angular-ui-bootstrap';
 
 import { SlideService } from './service/slide/slide.service';
 import { ComponentsModule } from './components';
@@ -15,7 +14,7 @@ import './index.scss';
 angular
     .module('app', [
         // dependencies
-        uiRouter, ngAnimate, ngTouch, uiBootstrap,
+        uiRouter, ngAnimate, ngTouch,
 
         // modules
         ComponentsModule,

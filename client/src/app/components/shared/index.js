@@ -1,11 +1,13 @@
 import angular from 'angular';
 
-import footer from './footer/footer'
-import navbar from './header/header'
+import footer from './footer/footer.component';
+import header from './header/header.component';
+import snackbar from './snackbar/snackbar.component';
 
 export const SharedModule = 'app.shared';
 
 angular
     .module(SharedModule, [])
-    .component('myFooter', footer)
-    .component('navbar', navbar);
+    .component('appFooter', footer)
+    .component('appHeader', header)
+    .component('appSnackbar', snackbar);

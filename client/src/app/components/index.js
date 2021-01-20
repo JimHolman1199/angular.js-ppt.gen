@@ -1,14 +1,12 @@
 import angular from 'angular';
 
-import app from './app/app'
-import about from './about/about'
-import dashboard from './dashboard/dashboard'
+import home from './home/home.component';
+import dashboard from './dashboard/dashboard.component';
 
 
 export const ComponentsModule = 'app.components';
 
 angular
     .module(ComponentsModule, [])
-    .component('app', app)
-    .component('about', about)
+    .component('app', home)
     .component('dashboard', dashboard)

@@ -10,7 +10,13 @@ export class SlideService {
   }
 
   generateSlidesFile() {
-    return this.$http.get('http://localhost:1337/api/presentation/generate');
+    return this.$http.get('http://localhost:1337/api/presentation/generate', {
+      responseType: "arraybuffer",
+      cache: false,
+      headers: {
+          'Content-Type': 'application/zip; charset=utf-8'
+        },
+    });
   }
 
   saveChanges(data) {

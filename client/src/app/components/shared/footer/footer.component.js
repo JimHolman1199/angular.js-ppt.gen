@@ -1,12 +1,11 @@
-import template from './footer.html'
-import styles from './styles.scss'
+import template from './footer.component.html'
+import './footer.component.scss'
 
 import { COMPANY_NAME } from '../../../constants/constants'
 
-class controller {
+class Controller {
     /** @ngInject */
     constructor() {
-        this.styles = styles;
         this.currentYear = this.getYear();
         this.name = COMPANY_NAME;
     }
@@ -18,5 +17,5 @@ class controller {
 
 export default {
     template,
-    controller
+    controller: Controller
 };
