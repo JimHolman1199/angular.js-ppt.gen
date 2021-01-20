@@ -1,0 +1,55 @@
+<div class="flex">
+    <h1>Modify presentations data here</h1>
+    <button class="btn btn-success mt-20 mb-20"
+            ng-click="$ctrl.onSaveChanges()">SAVE</button>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Rank</th>
+            <th>
+                <div class="inline-flex">Attributes</div>
+                <div class="inline-flex">
+                    <a ng-click="$ctrl.onSortBy('titleA')" href="#">
+                        <img class="icon rotate" src="../../../assets/icons/arrow-down-sign-to-navigate.svg" alt="Decreasing order">
+                    </a>
+                    <a href="#" ng-click="$ctrl.onSortBy('titleD')">
+                        <img class="icon" src="../../../assets/icons/arrow-down-sign-to-navigate.svg" alt="Ascending order">
+                    </a>
+                </div>
+            </th>
+            <th>
+                <div class="inline-flex">Initial Consideration Set</div>
+                <div class="inline-flex">
+                    <a ng-click="$ctrl.onSortBy('valueA')" href="#">
+                        <img class="icon rotate" src="../../../assets/icons/arrow-down-sign-to-navigate.svg" alt="Decreasing order">
+                    </a>
+                    <a href="#" ng-click="$ctrl.onSortBy('valueD')">
+                        <img class="icon" src="../../../assets/icons/arrow-down-sign-to-navigate.svg" alt="Ascending order">
+                    </a>
+                </div>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="item in $ctrl.slideData">
+            <td>{{$index + 1}}</td>
+            <td>{{item.mdata}}</td>
+            <td class="flex" >
+                <span>
+                    {{item.value | roundTo}}
+                </span>
+                <div class="progress progress-width">
+                    <div class="progress-bar" 
+                         role="progressbar"
+                         aria-valuenow="{{item.value}}"
+                         aria-valuemin="0"
+                         aria-valuemax="100"
+                         style="width: {{item.value}}%;">
+                        <span class="sr-only">{{item.value}}%</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

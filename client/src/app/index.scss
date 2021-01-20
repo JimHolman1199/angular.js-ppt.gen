@@ -1,8 +1,16 @@
-/* GLOBAL STYLES ARE DESCRIBED HERE */
-
-@import "../assets/bootstrap/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap";
 @import url('https://fonts.googleapis.com/css?family=Ubuntu');
 
 body { 
     padding-top: 70px;
+    background-color: #1F2739;
+    color: #fff;
+}
+
+h1 {
+    font-size:3em; 
+    font-weight: 300;
+    line-height:1em;
+    text-align: center;
+    color: #4DC3FA;
 }
