@@ -1,4 +1,4 @@
-const slideData = require('./data')
+const slideData = require('../../../assets/js/data')
 
 module.exports = {
 
