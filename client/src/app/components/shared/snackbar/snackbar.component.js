@@ -3,8 +3,9 @@ import './snackbar.component.scss'
 
 class Controller {
     /** @ngInject */
-    constructor() {
+    constructor(message) {
         this.state = false;
+        this.message = message;
     }
 
     open() {

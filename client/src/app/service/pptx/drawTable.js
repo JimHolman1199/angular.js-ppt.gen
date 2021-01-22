@@ -27,7 +27,7 @@ export default class DrawTable {
         let x = 5;
         arr.forEach((el, i) => {            
             if(el.type) {
-                const maxW = parseInt(this.settings.colW[i]) / 2;
+                const maxW = parseInt(this.settings.colW[i]) / 2 + 5;
                 const val = el.value / maxW * (100 / maxW);
                 this.drawText(
                     this.roundTo(el.value).toString(),
@@ -36,7 +36,7 @@ export default class DrawTable {
                     this.settings.colW[i],
                     {align: 'left', line: {color: this.settings.borderColor} }
                 )
-                this.drawRect( x+10, y+1.25, val, el.type);
+                this.drawRect( x+20, y+1.25, val, el.type);
             } else {
                 this.drawText(
                     el.toString(),

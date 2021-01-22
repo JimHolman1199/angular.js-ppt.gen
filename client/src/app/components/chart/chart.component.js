@@ -32,12 +32,23 @@ class Controller {
     this._chartService.renderPieChart('pieChart', result, 'Pie chart')
   }
 
+  onRenderLineChart() {
+    const groupedData = this.groupBy(this.data, 'type');
+    const result = [];
+    for (const property in groupedData) {
+      result.push({name: property, data: groupedData[property]})
+    }
+
+    this._chartService.renderLineChart('lineChart', result, 'Line chart')
+  }
+
   getAndModifyData() {
     this._slideService.getSlidesData()
       .then(data => {
         this.data = data.data.slideData;
         this.onRenderColumnChart();
         this.onRenderPieChart();
+        this.onRenderLineChart();
       });
   }
   
@@ -82,6 +93,29 @@ class Controller {
       result.values.push(groupedData[property].reduce((a,b)=>a+b,0))
     }
     this._pptxService.addPieChart([result]);
+  }
+
+  onAddLineChart() {
+    const result = this.data.reduce(function(rv, x) {
+      if(!rv.some(el => el['name'] === x['type'])) {
+        rv.push({
+          labels: [x['mdata'].substring(0,1)],
+          name: x['type'],
+          values: [x['value']]
+        })
+      } else {
+        rv.forEach(el => {
+          if(el['name'] === x['type']) {
+            el.labels.push(x['mdata'].substring(0,1));
+            el.values.push(x['value']);
+          }
+        });
+      }
+
+      return rv;
+    }, []);
+
+    this._pptxService.addLineChart(result);
   }
 
   onDownloadPres() {
