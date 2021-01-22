@@ -10,13 +10,12 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: '/',
       component: 'app'
     })
-    .state('app.about', {
-      url: 'about',
-      component: 'about'
-    })
     .state('app.dashboard', {
       url: 'dashboard',
       component: 'dashboard'
     })
-
+    .state('app.chart', {
+      url: 'charts',
+      component: 'chart'
+    })
 }

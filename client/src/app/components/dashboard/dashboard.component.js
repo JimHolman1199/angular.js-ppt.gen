@@ -1,11 +1,11 @@
 import template from './dashboard.component.html';
 import './dashboard.component.scss';
-import { SlideService } from '../../service/slide/slide.service';
 
 class Controller {
     /** @ngInject */
-    constructor(slideService) {
+    constructor(slideService, pptxService) {
         this._slideService = slideService;
+        this._pptxService = pptxService;
         this.slideData;
         this.sortType;
         this.sortingOrder = {
@@ -46,11 +46,16 @@ class Controller {
 
     onSaveChanges() {
         return this._slideService.saveChanges(this.slideData)
-            .then(res => console.log(res));
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+
+    onAddTableChart() {
+        this._pptxService.addTableChart(this.slideData);
     }
 }
 
-Controller.$inject = ['slideService']
+Controller.$inject = ['slideService', 'pptxService']
 
 export default {
     template,
