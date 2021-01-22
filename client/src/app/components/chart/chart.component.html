@@ -1,0 +1,22 @@
+<h1>Charts</h1>
+<button ng-click="$ctrl.onDownloadPres()"
+        class="btn btn-success">
+        <span class="label">Download PPT file</span>
+        <span class="spinner"></span>
+</button>
+<div class="charts_wrp">
+  <div>
+    <div id="columnChart"></div>
+    <button ng-click="$ctrl.onAddColumnChart()"
+            class="btn btn-dark">
+            Add to presentation
+    </button>
+  </div>
+  <div>
+    <div id="pieChart"></div>
+    <button ng-click="$ctrl.onAddPieChart()"
+            class="btn btn-dark">
+            Add to presentation
+    </button>
+  </div>
+</div>

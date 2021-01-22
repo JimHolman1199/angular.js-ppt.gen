@@ -1,6 +1,4 @@
-const math = require('./roundTo');
-
-module.exports = class DrawTable {
+export default class DrawTable {
     constructor(slide, settings, pptx) {
         this.slide = slide;
         this.settings = settings;
@@ -32,7 +30,7 @@ module.exports = class DrawTable {
                 const maxW = parseInt(this.settings.colW[i]) / 2;
                 const val = el.value / maxW * (100 / maxW);
                 this.drawText(
-                    math.roundTo(el.value).toString(),
+                    this.roundTo(el.value).toString(),
                     x,
                     y,
                     this.settings.colW[i],
@@ -101,8 +99,8 @@ module.exports = class DrawTable {
      * @param {object}  {}  Object for additional settings or to rewrite base settings
      * @return {void}
     */
-    drawText(text, x, y, w, obj) {
-        this.slide.addText(text, {
+    drawText(text, x, y, w, obj = {}) {
+        this.slide.addText(text, Object.assign({
             x: x + '%',
             y: y + '%',
             h: this.settings.h,
@@ -111,7 +109,10 @@ module.exports = class DrawTable {
             color: this.settings.textColor,
             isTextBox: true, 
             fontSize: 10,
-            ...obj
-        });
+        }, obj));
+    }
+
+    roundTo(num) {
+        return Math.round(num);
     }
 }
