@@ -7,6 +7,7 @@ class Controller {
     this._chartService = chartService
     this._slideService = slideService;
     this._pptxService  = pptxService;
+    this.message;
     this.data;
     this.catAndVal = [];
     this.types = [];
@@ -80,6 +81,7 @@ class Controller {
     }, []);
 
     this._pptxService.addColumnChart(result);
+    this.message = 'Column chart added to presentation';
   }
 
   onAddPieChart() {
@@ -93,29 +95,35 @@ class Controller {
       result.values.push(groupedData[property].reduce((a,b)=>a+b,0))
     }
     this._pptxService.addPieChart([result]);
+    this.message = 'Pie chart added to presentation';
   }
 
   onAddLineChart() {
-    const result = this.data.reduce(function(rv, x) {
-      if(!rv.some(el => el['name'] === x['type'])) {
-        rv.push({
-          labels: [x['mdata'].substring(0,1)],
-          name: x['type'],
-          values: [x['value']]
-        })
-      } else {
-        rv.forEach(el => {
-          if(el['name'] === x['type']) {
-            el.labels.push(x['mdata'].substring(0,1));
-            el.values.push(x['value']);
-          }
-        });
-      }
-
-      return rv;
-    }, []);
-
-    this._pptxService.addLineChart(result);
+    try {
+      const result = this.data.reduce(function(rv, x) {
+        if(!rv.some(el => el['name'] === x['type'])) {
+          rv.push({
+            labels: [x['mdata'].substring(0,1)],
+            name: x['type'],
+            values: [x['value']]
+          })
+        } else {
+          rv.forEach(el => {
+            if(el['name'] === x['type']) {
+              el.labels.push(x['mdata'].substring(0,1));
+              el.values.push(x['value']);
+            }
+          });
+        }
+  
+        return rv;
+      }, []);
+  
+      this._pptxService.addLineChart(result);
+      this.message = 'Line chart added to presentation';
+    } catch (error) {
+      
+    }
   }
 
   onDownloadPres() {

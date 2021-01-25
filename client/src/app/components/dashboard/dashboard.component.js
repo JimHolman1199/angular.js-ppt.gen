@@ -8,6 +8,7 @@ class Controller {
         this._pptxService = pptxService;
         this.slideData;
         this.sortType;
+        this.message;
         this.sortingOrder = {
             titleA: (a, b) => {
                 let titleA = a.mdata.toUpperCase();
@@ -52,6 +53,7 @@ class Controller {
 
     onAddTableChart() {
         this._pptxService.addTableChart(this.slideData);
+        this.message = 'Table chart added to presentation'
     }
 }
 
