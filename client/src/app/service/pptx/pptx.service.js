@@ -9,6 +9,11 @@ export class PptxService {
     this.pptx.company = 'Spoint';
     this.pptx.subject = 'Ped project';
     this.pptx.title = 'PptxGenJS Sample Presentation';
+    this.pptx.defineSlideMaster({
+      title: "MASTER_SLIDE",
+      background: { color: "FFFFFF" },
+      slideNumber: { x: 0.3, y: "90%" },
+    });
   }
 
   addPieChart(data) {
@@ -26,13 +31,37 @@ export class PptxService {
   addColumnChart(data) {
     const slide = this.addMasterSlide();
     slide.addChart(this.pptx.ChartType.bar, data, {
-      x:0.5, y:0.5, w:'90%', h:'90%',
+      x:0.5, y:0.5, w:'80%', h:'80%',
       showLegend: true,
       showDataTable: true,
       showDataTableKeys: true,
       showLabel: false,
       showValue: false,
       chartColors: ['b3dd6f', 'f99380', 'f7e15c', '19ccc7'],
+    });
+  }
+
+  addLineChart(data) {
+    const slide = this.addMasterSlide();
+    slide.addChart(this.pptx.ChartType.line, data, {
+      x:0.5, y:0.5, w:'80%', h:'80%',
+      showLegend: true,
+      showDataTable: true,
+      showDataTableKeys: true,
+      chartColors: ['b3dd6f', 'f99380', 'f7e15c', '19ccc7'],
+    });
+  }
+
+  addScatterChart(data) {
+    const slide = this.addMasterSlide();
+    slide.addChart(this.pptx.ChartType.bubble, data, {
+      x:0.5, y:0.5, w:'80%', h:'80%',
+      catAxisTitle: "Absolute Value",
+      valAxisTitle: "Value",
+      showLegend: true,
+      showDataTable: true,
+      showDataTableKeys: true,
+      chartColors: ['b3dd6f', 'f99380', 'f7e15c', '19ccc7']
     });
   }
 
@@ -87,11 +116,6 @@ export class PptxService {
   }
 
   addMasterSlide() {
-    this.pptx.defineSlideMaster({
-      title: "MASTER_SLIDE",
-      background: { color: "FFFFFF" },
-      slideNumber: { x: 0.3, y: "90%" },
-    });
     return this.pptx.addSlide({ masterName: "MASTER_SLIDE" });
   }
 

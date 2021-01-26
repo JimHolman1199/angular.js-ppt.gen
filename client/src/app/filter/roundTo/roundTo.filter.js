@@ -14,5 +14,3 @@ export class RoundToFilter {
         return filter.round();
     }
 }
-
-RoundToFilter.roundToFilterFactory.$inject = ['input'];

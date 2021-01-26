@@ -9,6 +9,7 @@ import { SharedModule } from './components/shared';
 import { RoundToFilter } from './filter/roundTo/roundTo.filter';
 import { PptxService } from './service/pptx/pptx.service';
 import { ChartService } from './service/chart/chart.service';
+import Snackbar from './directive/snackbar/snackbar.directive';
 import routesConfig from './routes';
 
 import './index.scss';
@@ -26,4 +27,5 @@ angular
     .service('pptxService', PptxService.PptxServiceFactory)
     .service('chartService', ChartService.ChartServiceFactory)
     .filter('roundTo', () => RoundToFilter.roundToFilterFactory)
+    .directive('snackbar', Snackbar.SnackbarFactory)
     .config(routesConfig);
