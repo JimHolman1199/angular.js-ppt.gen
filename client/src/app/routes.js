@@ -17,5 +17,5 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('app.chart', {
       url: 'charts',
       component: 'chart'
-    })
+    });
 }

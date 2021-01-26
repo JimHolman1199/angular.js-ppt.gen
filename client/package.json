@@ -82,5 +82,8 @@
         "extends": [
             "xo-space/esnext"
         ]
+    },
+    "jshintConfig": {
+        "esversion": 6
     }
 }

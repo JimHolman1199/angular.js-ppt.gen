@@ -6,7 +6,7 @@ export class RoundToFilter {
     }
 
     round() {
-        return Math.round(this.input)
+        return Math.round(this.input);
     }
 
     static roundToFilterFactory(input){

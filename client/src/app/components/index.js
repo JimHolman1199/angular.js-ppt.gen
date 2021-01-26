@@ -10,4 +10,4 @@ angular
     .module(ComponentsModule, [])
     .component('app', home)
     .component('dashboard', dashboard)
-    .component('chart', chart)
+    .component('chart', chart);

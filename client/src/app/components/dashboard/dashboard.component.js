@@ -30,7 +30,7 @@ class Controller {
             },
             valueA: (a, b) => a.value - b.value,
             valueD: (a, b) => b.value - a.value,
-        }
+        };
         this.getData();
     }
 

@@ -1,7 +1,7 @@
 import template from './header.component.html';
 import './header.component.scss';
 
-import { COMPANY_NAME } from '../../../constants/constants'
+import { COMPANY_NAME } from '../../../constants/constants';
 
 class Controller {
     /** @ngInject */

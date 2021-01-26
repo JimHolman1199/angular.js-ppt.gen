@@ -1,7 +1,7 @@
-import template from './footer.component.html'
-import './footer.component.scss'
+import template from './footer.component.html';
+import './footer.component.scss';
 
-import { COMPANY_NAME } from '../../../constants/constants'
+import { COMPANY_NAME } from '../../../constants/constants';
 
 class Controller {
     /** @ngInject */

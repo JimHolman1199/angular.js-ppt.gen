@@ -4,7 +4,7 @@ import './chart.component.scss';
 class Controller {
   /** @ngInject */
   constructor(slideService, pptxService, chartService) {
-    this._chartService = chartService
+    this._chartService = chartService;
     this._slideService = slideService;
     this._pptxService  = pptxService;
     this.message;
@@ -18,33 +18,33 @@ class Controller {
       'tangible': 'f99380',
       'rational': 'f7e15c',
       'emotional': '19ccc7',
-    }
+    };
   }
 
   onRenderColumnChart() {
     const groupedData = this.groupBy(this.data, 'type');
     const result = [];
     for (const property in groupedData) {
-      result.push({name: property, data: groupedData[property]})
+      result.push({name: property, data: groupedData[property]});
     }
-    this._chartService.renderColumnChart('columnChart', result, 'Column chart')
+    this._chartService.renderColumnChart('columnChart', result, 'Column chart');
   }
 
   onRenderPieChart() {
     const groupedData = this.groupBy(this.data, 'type');
     const result = [];
     for (const property in groupedData) {
-      result.push({name: property, y: groupedData[property].reduce((a,b)=>a+b,0)})
+      result.push({name: property, y: groupedData[property].reduce((a,b)=>a+b,0)});
     }
     
-    this._chartService.renderPieChart('pieChart', result, 'Pie chart')
+    this._chartService.renderPieChart('pieChart', result, 'Pie chart');
   }
 
   onRenderLineChart() {
     const groupedData = this.groupBy(this.data, 'type');
     const result = [];
     for (const property in groupedData) {
-      result.push({name: property, data: groupedData[property]})
+      result.push({name: property, data: groupedData[property]});
     }
 
     this._chartService.renderLineChart('lineChart', result, 'Line chart');
@@ -58,7 +58,7 @@ class Controller {
           color: '#' + _self.chartColors[x['type']],
           name: x['type'],
           data: [[x['value'], x['value_absolute']]]
-        })
+        });
       } else {
         rv.forEach(el => {
           if(el['name'] === x['type']) {
