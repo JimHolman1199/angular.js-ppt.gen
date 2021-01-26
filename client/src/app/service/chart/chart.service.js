@@ -31,7 +31,7 @@ export class ChartService {
           label: {
             connectorAllowed: false
           },
-          pointStart: 1950
+          pointStart: 0
         }
       },
       series: data,
@@ -101,6 +101,67 @@ export class ChartService {
         colorByPoint: true,
         data: data
       }]
+    });
+  }
+
+  renderScatterPlotChart(container, data, title) {
+    Highcharts.chart(container, {
+      chart: {
+        type: 'scatter',
+        zoomType: 'xy'
+      },
+      title: {
+        text: title
+      },
+      xAxis: {
+        title: {
+          enabled: true,
+          text: 'Value'
+        },
+        startOnTick: true,
+        endOnTick: true,
+        showLastLabel: true
+      },
+      yAxis: {
+        title: {
+          text: 'Absolute value'
+        }
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 100,
+        y: 70,
+        floating: true,
+        backgroundColor: Highcharts.defaultOptions.chart.backgroundColor,
+        borderWidth: 1
+      },
+      plotOptions: {
+        scatter: {
+          marker: {
+            radius: 5,
+            states: {
+              hover: {
+                enabled: true,
+                lineColor: 'rgb(100,100,100)'
+              }
+            }
+          },
+          states: {
+              hover: {
+                  marker: {
+                    enabled: false
+                  }
+              }
+          },
+          tooltip: {
+            headerFormat: '<b>{series.name}</b><br>',
+            pointFormat: '{point.x} value, {point.y} a-value'
+          }
+        }
+      },
+      series: data
     });
   }
 

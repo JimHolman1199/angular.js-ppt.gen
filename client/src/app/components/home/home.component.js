@@ -7,6 +7,7 @@ class Controller {
     constructor(slideService) {
         this._slideService = slideService;
         this.loading = false;
+        this.message;
     }
 
     onGenerateFile() {
@@ -16,6 +17,7 @@ class Controller {
                 var blob = new Blob([res.data], {type: 'application/zip'});
                 FileSaver.saveAs(blob, 'presentation.pptx');
                 this.loading = false;
+                this.message = 'File successfully downloaded';
             });
     }
 }

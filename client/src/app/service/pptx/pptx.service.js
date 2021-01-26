@@ -31,7 +31,7 @@ export class PptxService {
   addColumnChart(data) {
     const slide = this.addMasterSlide();
     slide.addChart(this.pptx.ChartType.bar, data, {
-      x:0.5, y:0.5, w:'90%', h:'90%',
+      x:0.5, y:0.5, w:'80%', h:'80%',
       showLegend: true,
       showDataTable: true,
       showDataTableKeys: true,
@@ -44,11 +44,24 @@ export class PptxService {
   addLineChart(data) {
     const slide = this.addMasterSlide();
     slide.addChart(this.pptx.ChartType.line, data, {
-      x:0.5, y:0.5, w:'90%', h:'90%',
+      x:0.5, y:0.5, w:'80%', h:'80%',
       showLegend: true,
       showDataTable: true,
       showDataTableKeys: true,
       chartColors: ['b3dd6f', 'f99380', 'f7e15c', '19ccc7'],
+    });
+  }
+
+  addScatterChart(data) {
+    const slide = this.addMasterSlide();
+    slide.addChart(this.pptx.ChartType.bubble, data, {
+      x:0.5, y:0.5, w:'80%', h:'80%',
+      catAxisTitle: "Absolute Value",
+      valAxisTitle: "Value",
+      showLegend: true,
+      showDataTable: true,
+      showDataTableKeys: true,
+      chartColors: ['b3dd6f', 'f99380', 'f7e15c', '19ccc7']
     });
   }
 

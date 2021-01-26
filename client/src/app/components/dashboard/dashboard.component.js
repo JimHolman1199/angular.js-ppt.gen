@@ -37,7 +37,7 @@ class Controller {
     getData() {
         this._slideService.getSlidesData().then(data => {
             this.slideData = data.data.slideData;
-        }).catch(err => console.log(err));
+        }).catch(err => this.message = err.message);
     }
 
     onSortBy(newOrder) {
@@ -47,13 +47,17 @@ class Controller {
 
     onSaveChanges() {
         return this._slideService.saveChanges(this.slideData)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+            .then(res => this.message = 'Сhanges saved successfully')
+            .catch(err => this.message = err.message);
     }
 
     onAddTableChart() {
-        this._pptxService.addTableChart(this.slideData);
-        this.message = 'Table chart added to presentation'
+        try {
+            this._pptxService.addTableChart(this.slideData);
+            this.message = 'Table chart added to presentation';    
+        } catch (error) {
+            this.message = error.message;
+        }
     }
 }
 
