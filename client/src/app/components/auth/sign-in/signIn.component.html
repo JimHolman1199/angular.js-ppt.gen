@@ -1,0 +1,49 @@
+<div class="custom-container" ng-controller="appSignIn as $ctrl">
+    <form>
+        <h1>Sign in</h1>
+        <div class="editor-field editor-field__textbox">
+            <div class="editor-field__label-container">
+                <label class="editor-field__label">Email</label>
+            </div>
+            <div class="editor-field__container">
+                <input type="email"
+                        autofocus
+                        class="editor-field__input"
+                        ng-focus="$ctrl.generateNoise($event, 'input')"
+                        ng-blur="$ctrl.removeNoise($event, 'input')"
+                        ng-model="$ctrl.user.email"/>
+            </div>
+            <span class="editor-field__bottom"></span>
+            <div class="editor-field__noise"></div>
+        </div>
+        <div class="editor-field editor-field__textbox">
+            <div class="editor-field__label-container">
+                <label class="editor-field__label">Password</label>
+            </div>
+            <div class="editor-field__container">
+                <input type="password" 
+                        class="editor-field__input"
+                        ng-focus="$ctrl.generateNoise($event, 'input')"
+                        ng-blur="$ctrl.removeNoise($event, 'input')"
+                        ng-model="$ctrl.user.password"/>
+            </div>
+            <span class="editor-field__bottom"></span>
+            <div class="editor-field__noise"></div>
+        </div>
+        <button class="c-btn btn--primary reset-btn"
+                type="submit"
+                ng-click="$ctrl.onSignIn()"
+                ng-mouseover="$ctrl.generateNoise($event, 'button')" 
+                ng-mouseout="$ctrl.removeNoise($event, 'button')">
+            <div class="btn__container">
+                Sign in
+            </div>
+            <div class="btn__bottom"></div>
+            <div class="btn__noise"></div>
+        </button>
+    </form>
+</div>
+
+
+
+  

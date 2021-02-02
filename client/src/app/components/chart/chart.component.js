@@ -57,12 +57,12 @@ class Controller {
         rv.push({
           color: '#' + _self.chartColors[x['type']],
           name: x['type'],
-          data: [[x['value'], x['value_absolute']]]
+          data: [[parseFloat(x['value']), parseFloat(x['value_absolute'])]]
         });
       } else {
         rv.forEach(el => {
           if(el['name'] === x['type']) {
-            el.data.push([x['value'], x['value_absolute']]);
+            el.data.push([parseFloat(x['value']), parseFloat(x['value_absolute'])]);
           }
         });
       }
@@ -76,7 +76,7 @@ class Controller {
   getAndModifyData() {
     this._slideService.getSlidesData()
       .then(data => {
-        this.data = data.data.slideData;
+        this.data = data.data;
         this.onRenderColumnChart();
         this.onRenderPieChart();
         this.onRenderLineChart();
@@ -86,7 +86,7 @@ class Controller {
   
   groupBy(xs, key) {
     return xs.reduce(function(rv, x) {
-      (rv[x[key]] = rv[x[key]] || []).push(x.value);
+      (rv[x[key]] = rv[x[key]] || []).push(parseFloat(x.value));
       return rv;
     }, {});
   }
@@ -123,7 +123,7 @@ class Controller {
     };
     for (const property in groupedData) {
       result.labels.push(property);
-      result.values.push(groupedData[property].reduce((a,b)=>a+b,0))
+      result.values.push(groupedData[property].reduce((a,b)=>a+b,0));
     }
     this._pptxService.addPieChart([result]);
     this.message = 'Pie chart added to presentation';

@@ -1,0 +1,11 @@
+$--primary-color: hsl(199, 95%, 64%);
+$--secondary-color:hsl(236, 26%, 76%);
+$--primary-dark-color: hsl(236, 36%, 9%);
+
+h1 {
+    font-size:3em; 
+    font-weight: 300;
+    line-height: 1em;
+    text-align: center;
+    color: $--primary-color;
+}
