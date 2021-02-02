@@ -1,7 +1,11 @@
+
 module.exports.routes = {
 
   'GET /api/slides/data': { action: 'slide/slide' },
-  'POST /api/slides/save': { action: 'save/save' },
-  'GET /api/presentation/generate': { action: 'presentation/generate' },
 
+  'POST /auth/signup': 'AuthController.signup',
+  'POST /auth/signin': 'AuthController.signin',
+  'GET /auth/signout': 'AuthController.signout',
+
+  'GET /admin/users' : 'AdminController.users',
 };

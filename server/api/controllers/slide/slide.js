@@ -1,30 +1,11 @@
-const slideData = require('../../../assets/js/data')
+const {pool} = require('../../../config/pool');
 
-module.exports = {
+module.exports = async function getData(req, res) {
+  pool.query('SELECT * FROM data', (err, result) => {
+    if (err) {
+      return err;
+    }
 
-
-  friendlyName: 'Slide',
-
-
-  description: 'Slide data.',
-
-
-  inputs: {
-
-  },
-
-
-  exits: {
-
-  },
-
-
-  fn: async function (inputs) {
-
-    // All done.
-    return slideData;
-
-  }
-
-
+    return res.send(result.rows);
+  });
 };
