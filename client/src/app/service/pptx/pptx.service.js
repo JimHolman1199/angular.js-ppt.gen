@@ -84,7 +84,7 @@ export class PptxService {
         'rational': 'f7e15c',
         'emotional': '19ccc7',
       }
-    }
+    };
     
     const slide = this.addMasterSlide();
     const drawTable = new DrawTable(
@@ -95,7 +95,7 @@ export class PptxService {
     drawTable.drawHeader();
     data.forEach((el, i) => {
       if(i < maxRowsPerSlide) {
-        drawTable.drawRow([i+1, el.mdata, {type: el.type, value: el.value}])
+        drawTable.drawRow([i+1, el.mdata, {type: el.type, value: el.value}]);
       }
     });
     drawTable.drawAboutTable();
@@ -109,7 +109,7 @@ export class PptxService {
     drawTable1.drawHeader();
     data.forEach((el, i) => {
       if(i >= maxRowsPerSlide) {
-        drawTable1.drawRow([i+1, el.mdata, {type: el.type, value: el.value}])
+        drawTable1.drawRow([i+1, el.mdata, {type: el.type, value: el.value}]);
       }
     });
     drawTable1.drawAboutTable();

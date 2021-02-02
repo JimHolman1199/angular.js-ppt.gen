@@ -30,25 +30,19 @@ class Controller {
             },
             valueA: (a, b) => a.value - b.value,
             valueD: (a, b) => b.value - a.value,
-        }
+        };
         this.getData();
     }
 
     getData() {
         this._slideService.getSlidesData().then(data => {
-            this.slideData = data.data.slideData;
+            this.slideData = data.data;
         }).catch(err => this.message = err.message);
     }
 
     onSortBy(newOrder) {
         this.sortType = newOrder;
         return this.slideData = this.slideData.sort(this.sortingOrder[newOrder]);
-    }
-
-    onSaveChanges() {
-        return this._slideService.saveChanges(this.slideData)
-            .then(res => this.message = 'Сhanges saved successfully')
-            .catch(err => this.message = err.message);
     }
 
     onAddTableChart() {

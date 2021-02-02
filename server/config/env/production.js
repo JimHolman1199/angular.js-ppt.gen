@@ -30,7 +30,8 @@ module.exports = {
   *                                                                         *
   **************************************************************************/
   datastores: {
-
+    adapter: 'sails-postgresql',
+    url: 'postgresql://postgres:admin@localhost:5432/presentation',
     /***************************************************************************
     *                                                                          *
     * Configure your default production database.                              *

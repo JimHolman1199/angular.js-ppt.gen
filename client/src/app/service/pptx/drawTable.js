@@ -17,7 +17,7 @@ export default class DrawTable {
                 y,
                 this.settings.colW[i],
                 {bold: true, line: {color: this.settings.borderColor}}
-            )
+            );
             x += parseInt(this.settings.colW[i]);
         });
     }
@@ -35,7 +35,7 @@ export default class DrawTable {
                     y,
                     this.settings.colW[i],
                     {align: 'left', line: {color: this.settings.borderColor} }
-                )
+                );
                 this.drawRect( x+20, y+1.25, val, el.type);
             } else {
                 this.drawText(
@@ -44,7 +44,7 @@ export default class DrawTable {
                     y,
                     this.settings.colW[i],
                     {line: {color: this.settings.borderColor} }
-                )
+                );
             }
             x += parseInt(this.settings.colW[i]);
         });
@@ -66,7 +66,7 @@ export default class DrawTable {
                 fill: { color: el }
             });
             // Draw text
-            this.drawText(text[i], x+3, y, '8%', {h: this.settings.rectH})
+            this.drawText(text[i], x+3, y, '8%', {h: this.settings.rectH});
             y += 5;
         });
     }

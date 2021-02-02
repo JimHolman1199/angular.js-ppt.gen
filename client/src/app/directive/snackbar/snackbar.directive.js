@@ -1,5 +1,5 @@
-import template from './snackbar.directive.html'
-import './snackbar.directive.scss'
+import template from './snackbar.directive.html';
+import './snackbar.directive.scss';
 
 class Snackbar {
     /** @ngInject */
@@ -17,21 +17,21 @@ class Snackbar {
         this.state = false;
         this.$doCheck = function () {
             this.oldValue = this.newValue;
-            this.newValue = this.message
+            this.newValue = this.message;
             if(this.newValue !== this.oldValue) {
                 this.open();
             }   
-        }
+        };
     }
 
     open() {
         this.timeoutPromise = this.$timeout(function() {
             this.close();
-        }.bind(this), 2000)
+        }.bind(this), 2000);
     }
 
     close() {
-        this.$timeout.cancel(this.timeoutPromise)
+        this.$timeout.cancel(this.timeoutPromise);
         this.message = '';
     }
 
@@ -41,7 +41,6 @@ class Snackbar {
     }
 }
 
-Snackbar.$inject = ['$timeout']
+Snackbar.$inject = ['$timeout'];
 
 export default Snackbar;
-

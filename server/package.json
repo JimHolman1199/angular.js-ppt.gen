@@ -8,13 +8,19 @@
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
+    "bcrypt": "^5.0.0",
     "grunt": "1.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.5.1",
     "pptxgenjs": "^3.4.0",
     "sails": "^1.4.0",
     "sails-hook-grunt": "^4.0.0",
     "sails-hook-orm": "^3.0.1",
     "sails-hook-sockets": "^2.0.0",
-    "sails-hook-uploads": "^0.4.3"
+    "sails-hook-uploads": "^0.4.3",
+    "sails-postgresql": "^2.0.0"
   },
   "devDependencies": {
     "eslint": "5.16.0"
@@ -34,5 +40,8 @@
   "license": "",
   "engines": {
     "node": "^14.15"
+  },
+  "jshintConfig": {
+    "esversion": 8
   }
 }

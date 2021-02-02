@@ -1,26 +1,64 @@
 </header>
     <nav class="navbar navbar-expand-md fixed-top">
-        <div class="container">
-        <a class="navbar-brand" ui-sref="app">{{$ctrl.name}}</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span>
-            <i class="fas fa-bars"></i>
-            </span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active" ui-sref-active-eq="active">
-                    <a class="nav-link" ui-sref="app">Home</a>
+        <div class="scene_nav">
+            <ol class="scene_nav_list">
+                <li class="scene_nav_item">
+                    <a ui-sref="app" 
+                       ui-sref-active-eq="o-active">
+                        <button class="scene_nav_button">
+                            <span class="scene_nav_text">Home</span>
+                        </button>
+                    </a>
                 </li>
-                <li class="nav-item" ui-sref-active-eq="active">
-                    <a class="nav-link" ui-sref="app.dashboard">Dashboard</a>
+                <li class="scene_nav_item">
+                    <a ui-sref="app.dashboard" 
+                       ui-sref-active-eq="o-active">
+                        <button class="scene_nav_button">
+                            <span class="scene_nav_text">Dashboard</span>
+                        </button>
+                    </a>
                 </li>
-                <li class="nav-item" ui-sref-active-eq="active">
-                    <a class="nav-link" ui-sref="app.chart">Charts</a>
-                </li> 
-            </ul>
-        </div>
+                <li class="scene_nav_item">
+                    <a ui-sref="app.chart" 
+                       ui-sref-active-eq="o-active">
+                        <button class="scene_nav_button">
+                            <span class="scene_nav_text">chart</span>
+                        </button>
+                    </a>
+                </li>
+                <li class="scene_nav_item" ng-if="!$ctrl.isLoggedIn">
+                    <a ui-sref-active-eq="o-active"
+                       ng-click="$ctrl.open('sign-in')">
+                        <button class="scene_nav_button">
+                            <span class="scene_nav_text">Sign in</span>
+                        </button>
+                    </a>
+                </li>
+                <li class="scene_nav_item" ng-if="!$ctrl.isLoggedIn">
+                    <a ui-sref-active-eq="o-active"
+                       ng-click="$ctrl.open('sign-up')">
+                        <button class="scene_nav_button">
+                            <span class="scene_nav_text">Sign up</span>
+                        </button>
+                    </a>
+                </li>
+                <li class="scene_nav_item" ng-if="$ctrl.isLoggedIn.role === 'admin'">
+                    <a ui-sref-active-eq="o-active"
+                       ui-sref="app.admin">
+                        <button class="scene_nav_button">
+                            <span class="scene_nav_text">admin</span>
+                        </button>
+                    </a>
+                </li>
+                <li class="scene_nav_item" ng-if="$ctrl.isLoggedIn">
+                    <a ui-sref-active-eq="o-active"
+                       ng-click="$ctrl.onSignOut()">
+                        <button class="scene_nav_button">
+                            <span class="scene_nav_text">Sign out</span>
+                        </button>
+                    </a>
+                </li>
+            </ol>
         </div>
     </nav>
 </header>
