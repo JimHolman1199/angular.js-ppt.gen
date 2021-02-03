@@ -3,12 +3,12 @@ import './dashboard.component.scss';
 
 class Controller {
     /** @ngInject */
-    constructor(slideService, pptxService) {
+    constructor(slideService, pptxService, $rootScope) {
         this._slideService = slideService;
         this._pptxService = pptxService;
         this.slideData;
         this.sortType;
-        this.message;
+        this.message = $rootScope.message;
         this.sortingOrder = {
             titleA: (a, b) => {
                 let titleA = a.mdata.toUpperCase();
@@ -55,7 +55,7 @@ class Controller {
     }
 }
 
-Controller.$inject = ['slideService', 'pptxService']
+Controller.$inject = ['slideService', 'pptxService', '$rootScope']
 
 export default {
     template,

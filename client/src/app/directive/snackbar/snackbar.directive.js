@@ -3,8 +3,9 @@ import './snackbar.directive.scss';
 
 class Snackbar {
     /** @ngInject */
-    constructor($timeout) {
+    constructor($timeout, $rootScope) {
         this.$timeout = $timeout;
+        this._rootScope = $rootScope;
         this.controller = () => this;
         this.controllerAs = '$ctrl1';
         this.bindToController = {
@@ -14,7 +15,6 @@ class Snackbar {
         this.timeoutPromise;
         this.oldValue;
         this.newValue;
-        this.state = false;
         this.$doCheck = function () {
             this.oldValue = this.newValue;
             this.newValue = this.message;
@@ -22,6 +22,10 @@ class Snackbar {
                 this.open();
             }   
         };
+
+        $rootScope.$watch('message', (msg) => {
+            this.message = msg;
+        }, true);
     }
 
     open() {
@@ -33,14 +37,15 @@ class Snackbar {
     close() {
         this.$timeout.cancel(this.timeoutPromise);
         this.message = '';
+        this._rootScope.message = false; 
     }
 
-    static SnackbarFactory($timeout) {
-        let service = new Snackbar($timeout);
+    static SnackbarFactory($timeout, $rootScope) {
+        let service = new Snackbar($timeout, $rootScope);
         return service;
     }
 }
 
-Snackbar.$inject = ['$timeout'];
+Snackbar.$inject = ['$timeout', ' $rootScope'];
 
 export default Snackbar;

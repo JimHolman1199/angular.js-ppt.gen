@@ -6,19 +6,6 @@ class Controller {
     /** @ngInject */
     constructor(slideService) {
         this._slideService = slideService;
-        this.loading = false;
-        this.message;
-    }
-
-    onGenerateFile() {
-        this.loading = true;
-        this._slideService.generateSlidesFile()
-            .then(res => {
-                var blob = new Blob([res.data], {type: 'application/zip'});
-                FileSaver.saveAs(blob, 'presentation.pptx');
-                this.loading = false;
-                this.message = 'File successfully downloaded';
-            });
     }
 }
 

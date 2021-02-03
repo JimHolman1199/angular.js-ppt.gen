@@ -3,11 +3,11 @@ import './chart.component.scss';
 
 class Controller {
   /** @ngInject */
-  constructor(slideService, pptxService, chartService) {
+  constructor(slideService, pptxService, chartService, $rootScope) {
     this._chartService = chartService;
     this._slideService = slideService;
     this._pptxService  = pptxService;
-    this.message;
+    this.message = $rootScope.message;
     this.data;
     this.catAndVal = [];
     this.types = [];
@@ -190,7 +190,7 @@ class Controller {
   }
 }
 
-Controller.$inject = ['slideService', 'pptxService', 'chartService'];
+Controller.$inject = ['slideService', 'pptxService', 'chartService', '$rootScope'];
 
 export default {
     template,
