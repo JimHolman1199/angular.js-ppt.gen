@@ -5,7 +5,7 @@ export class AdminService {
   }
 
   getAllUsers() {
-    return this.$http.get('http://localhost:1337/admin/users');
+    return this.$http.get('http://localhost:1337/admin/users', {withCredentials: true});
   }
 
   static AdminServiceFactory($http) {

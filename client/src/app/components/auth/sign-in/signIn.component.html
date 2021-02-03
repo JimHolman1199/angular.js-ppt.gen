@@ -1,5 +1,5 @@
 <div class="custom-container" ng-controller="appSignIn as $ctrl">
-    <form>
+    <form name="signInForm">
         <h1>Sign in</h1>
         <div class="editor-field editor-field__textbox">
             <div class="editor-field__label-container">
@@ -11,7 +11,9 @@
                         class="editor-field__input"
                         ng-focus="$ctrl.generateNoise($event, 'input')"
                         ng-blur="$ctrl.removeNoise($event, 'input')"
-                        ng-model="$ctrl.user.email"/>
+                        ng-model="$ctrl.user.email" 
+                        ng-required="true"
+                        ng-pattern="$ctrl.emailPattern" />
             </div>
             <span class="editor-field__bottom"></span>
             <div class="editor-field__noise"></div>
@@ -25,6 +27,7 @@
                         class="editor-field__input"
                         ng-focus="$ctrl.generateNoise($event, 'input')"
                         ng-blur="$ctrl.removeNoise($event, 'input')"
+                        ng-required="true"
                         ng-model="$ctrl.user.password"/>
             </div>
             <span class="editor-field__bottom"></span>
@@ -34,7 +37,8 @@
                 type="submit"
                 ng-click="$ctrl.onSignIn()"
                 ng-mouseover="$ctrl.generateNoise($event, 'button')" 
-                ng-mouseout="$ctrl.removeNoise($event, 'button')">
+                ng-mouseout="$ctrl.removeNoise($event, 'button')"
+                ng-disabled="signInForm.$invalid" >
             <div class="btn__container">
                 Sign in
             </div>
