@@ -8,7 +8,7 @@ const passport = require('passport');
 
 module.exports = {
     signin: async function(req, res) {
-        await passport.authenticate('local', function(err, user, info) {
+        passport.authenticate('local', function(err, user, info) {
             if(err || !user) {
                 return res.send({
                     message: info.message,
@@ -20,6 +20,8 @@ module.exports = {
                 if(err) {
                     res.send(err);
                 }
+                req.session.userId = user.id;
+                req.session.user = req.user;
                 sails.log('User '+user.id+' has logged in.');
                 return res.send(user);
             });
@@ -52,6 +54,7 @@ module.exports = {
                 if(err) {
                     return res.send(err);
                 }
+                req.session.userId = user.id;
                 sails.log('User '+ user.id +' has logged in.');
                 return res.send(user);
             });
