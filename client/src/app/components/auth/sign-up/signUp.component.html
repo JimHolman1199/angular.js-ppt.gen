@@ -1,6 +1,6 @@
 <div class="custom-container" ng-controller="appSignUp as $ctrl">
     <h1>Sign up</h1>
-    <form novalidate>
+    <form name="signUpForm">
         <div class="editor-field editor-field__textbox">
             <div class="editor-field__label-container">
                 <label class="editor-field__label">Email</label>
@@ -10,7 +10,8 @@
                         class="editor-field__input"
                         ng-focus="$ctrl.generateNoise($event, 'input')"
                         ng-blur="$ctrl.removeNoise($event, 'input')"
-                        ng-model="$ctrl.user.email"/>
+                        ng-model="$ctrl.user.email" 
+                        ng-pattern="$ctrl.emailPattern"/>
             </div>
             <span class="editor-field__bottom"></span>
             <div class="editor-field__noise"></div>
@@ -24,7 +25,7 @@
                         class="editor-field__input"
                         ng-focus="$ctrl.generateNoise($event, 'input')"
                         ng-blur="$ctrl.removeNoise($event, 'input')"
-                        ng-model="$ctrl.user.username"/>
+                        ng-model="$ctrl.user.username" />
             </div>
             <span class="editor-field__bottom"></span>
             <div class="editor-field__noise"></div>
@@ -38,7 +39,8 @@
                         class="editor-field__input"
                         ng-focus="$ctrl.generateNoise($event, 'input')"
                         ng-blur="$ctrl.removeNoise($event, 'input')"
-                        ng-model="$ctrl.user.password"/>
+                        ng-model="$ctrl.user.password" 
+                        ng-required="true" />
             </div>
             <span class="editor-field__bottom"></span>
             <div class="editor-field__noise"></div>
@@ -52,7 +54,8 @@
                         class="editor-field__input"
                         ng-focus="$ctrl.generateNoise($event, 'input')"
                         ng-blur="$ctrl.removeNoise($event, 'input')" 
-                        ng-model="$ctrl.user.confirmPassword"/>
+                        ng-model="$ctrl.user.confirmPassword" 
+                        ng-required="true"/>
             </div>
             <span class="editor-field__bottom"></span>
             <div class="editor-field__noise"></div>
@@ -69,7 +72,8 @@
                 type="submit"
                 ng-click="$ctrl.onSignUp()"
                 ng-mouseover="$ctrl.generateNoise($event, 'button')" 
-                ng-mouseout="$ctrl.removeNoise($event, 'button')">
+                ng-mouseout="$ctrl.removeNoise($event, 'button')"
+                ng-disabled="signUpForm.$invalid">
             <div class="btn__container">
                 Sign up
             </div>

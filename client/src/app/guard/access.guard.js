@@ -5,21 +5,23 @@ export class AccessGuard {
     this._localStorageService = localStorageService;
     this._location = $location;
     this.status = {
-        OK: 200,
-        UNAUTHORIZED: 401,
-        FORBIDDEN: 403,
+      OK: 200,
+      UNAUTHORIZED: 401,
+      FORBIDDEN: 403,
     };
   }
 
   isAdmin() {
     const user = this._rootScope.user || this._localStorageService.get('user');
     if (!user) {
+      this._rootScope.message = 'You are not authorized !';
       this._location.path('/');
       return this._q.reject(this.status.UNAUTHORIZED);
     } else if(user.role === 'admin') {
       return this.status.OK;
     } else {
       this._location.path('/');
+      this._rootScope.message = 'You are not admin !';
       return this._q.reject(this.status.FORBIDDEN);
     }
   }
@@ -30,6 +32,7 @@ export class AccessGuard {
       return this.status.OK;
     } else {
       this._location.path('/');
+      this._rootScope.message = 'You are not authorized !';
       return this._q.reject(this.status.UNAUTHORIZED);
     }
   }

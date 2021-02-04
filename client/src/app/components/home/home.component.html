@@ -3,13 +3,10 @@
   <div class="container minHeight" role="main">
     <div ui-view class="flex" style="width: 100%;">
       <h1>Download presentation</h1>
-      <button class="btn btn-success expand-right ladda-button"
-              ng-class="{'loading': $ctrl.loading}"
-              ng-click="$ctrl.onGenerateFile()">
-        <span class="label">Download PPT file</span>
-        <span class="spinner"></span>
-      </button>
-      <snackbar message="$ctrl.message"></snackbar>
+      <div class="sign">
+        <p>Come in! We're</p>
+        <b>Op<span>e</span>n</b>
+      </div>
     </div>
   </div>
   <app-footer></app-footer>

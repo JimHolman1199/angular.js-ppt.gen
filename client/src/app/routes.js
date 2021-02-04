@@ -1,5 +1,3 @@
-import AccessGuard from './guard/access.guard';
-
 export default routesConfig;
 
 /** @ngInject */

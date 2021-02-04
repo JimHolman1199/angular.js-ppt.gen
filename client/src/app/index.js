@@ -41,4 +41,7 @@ angular
     .service('accessGuard', AccessGuard.AccessGuardFactory)
     .filter('roundTo', () => RoundToFilter.roundToFilterFactory)
     .directive('snackbar', Snackbar.SnackbarFactory)
-    .config(routesConfig);
+    .config(routesConfig)
+    .config(['$httpProvider', function($httpProvider) {
+        $httpProvider.defaults.withCredentials = true;
+    }]);

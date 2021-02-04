@@ -2,6 +2,7 @@ import template from './signUp.component.html';
 import './signUp.component.scss';
 
 import { removeNoise, generateNoise } from '../js/helper';
+import { EMAIL_REGEX } from '../../../constants/constants';
 
 export default class Controller {
   /** @ngInject */
@@ -13,7 +14,7 @@ export default class Controller {
     this.user = {
       role: 'user'
     };
-    console.log(this._scope);
+    this.emailPattern = EMAIL_REGEX;
   }
 
   onSignUp() {

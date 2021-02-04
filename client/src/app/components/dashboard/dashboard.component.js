@@ -1,14 +1,15 @@
 import template from './dashboard.component.html';
 import './dashboard.component.scss';
+import XLSX from 'xlsx';
 
 class Controller {
     /** @ngInject */
-    constructor(slideService, pptxService) {
+    constructor(slideService, pptxService, $rootScope) {
         this._slideService = slideService;
         this._pptxService = pptxService;
         this.slideData;
         this.sortType;
-        this.message;
+        this.message = $rootScope.message;
         this.sortingOrder = {
             titleA: (a, b) => {
                 let titleA = a.mdata.toUpperCase();
@@ -53,9 +54,25 @@ class Controller {
             this.message = error.message;
         }
     }
+
+    onSaveAsXlsx() {
+        //const wb = XLSX.utils.table_to_book(document.querySelector('table'));
+        const ws = XLSX.utils.json_to_sheet(this.slideData);
+
+		const wb = XLSX.utils.book_new();
+		XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+        XLSX.writeFile(wb, "table.xlsx");
+    }
+    
+    onSaveAsCsv() {
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.json_to_sheet(this.slideData);
+        XLSX.utils.book_append_sheet(wb, ws, 'test');
+        XLSX.writeFile(wb, 'table.csv');
+    }
 }
 
-Controller.$inject = ['slideService', 'pptxService']
+Controller.$inject = ['slideService', 'pptxService', '$rootScope']
 
 export default {
     template,

@@ -111,3 +111,85 @@
     --primary-hue: 260;
 }
 
+// primary-button btn
+.primary-btn {
+    background: $--secondary-yellow-color;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+    height: 50px;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%);
+    text-transform: uppercase;
+    text-align: left;
+    padding: 0 20px;
+    cursor: pointer;
+    position: relative;
+    padding-right: 75px;
+    
+    &:focus {
+        outline: none;
+    }
+    
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: $--primary-color;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+    }
+    
+    &:hover:before,
+    &:focus:before{
+        transform-origin: left center;
+        transform: scaleX(1);
+    }
+}
+  
+.primary-btn:hover .primary-btn__icon,
+.primary-btn:focus .primary-btn__icon {
+    transform: translate3d(10px, -50%, 0);
+}
+
+.primary-btn__label {
+    position: relative;
+}
+
+.primary-btn__icon {
+    position: absolute;
+    top: 50%;
+    transform: translate3d(0, -50%, 0);
+    right: 25px;
+    width: 24px;
+    height: 24px;
+    transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+
+    &:before {
+        content: '';
+        height: 1px;
+        width: 100%;
+        background: black;
+        position: absolute;
+        left: 0;
+        top: 12px;
+    }
+
+    &:after {
+        content: '';
+        transform: rotate(45deg);
+        border-top: 1px solid black;
+        border-right: 1px solid black;
+        width: 8px;
+        height: 8px;
+        position: absolute;
+        right: 0;
+        top: 8px;
+    }
+}

@@ -7,11 +7,12 @@ import { COMPANY_NAME } from '../../../constants/constants';
 
 class Controller {
     /** @ngInject */
-    constructor($uibModal, authService, localStorageService, $rootScope) {
+    constructor($uibModal, authService, localStorageService, $rootScope, $location) {
         this.name = COMPANY_NAME;
         this._rootScope =  $rootScope;
         this.authService = authService;
         this._localStorageService = localStorageService;
+        this._location = $location;
         this.user = this.getUser();
         this._rootScope.user = this.user;
         this.isLoggedIn = this.user;
@@ -54,11 +55,12 @@ class Controller {
                 this.isLoggedIn = null;
                 this._rootScope.user = null;
                 this._localStorageService.remove('user');
+                this._location.path('/');
             });
     }
 }
 
-Controller.$inject = ['$uibModal', 'authService', 'localStorageService', '$rootScope'];
+Controller.$inject = ['$uibModal', 'authService', 'localStorageService', '$rootScope', '$location'];
 
 export default {
     template,

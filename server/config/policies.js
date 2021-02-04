@@ -9,5 +9,9 @@
  */
 
 module.exports.policies = {
-  '*': true,
+  '*': 'isAuthenticated',
+  'admin/users': 'isAdmin',
+  'auth/signin': true,
+  'auth/signup': true,
+  'auth/signout': true,
 };
