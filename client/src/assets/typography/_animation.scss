@@ -82,3 +82,21 @@
         clip-path: var(--clip-four);
     }
 }
+
+@keyframes neon {
+    0%, 24%, 76%, 100% {
+      box-shadow: 0 0 0 3px #ff000052, inset 0 0 0 3px #2334ff, inset 0 0 12px 1px #2334ff;
+    }
+    25%, 75% {
+      box-shadow: 0px 0px 0px 3px red, 0px 0px 17px 1px red, inset 0 0 0 3px #2334ff78;
+    }
+}
+  
+@keyframes flicker {
+    25%, 30%, 60%, 67% { opacity: 1; }
+    26%, 63% { opacity: .7; }
+    27%, 62% { opacity: .8; }
+    28% { opacity: .3; }
+    61% { opacity: .4; }
+    65% { opacity: .5; }
+}

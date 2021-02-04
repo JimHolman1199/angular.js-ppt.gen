@@ -6,6 +6,23 @@
         <div class="primary-btn__label">Add to presentation</div>
         <div class="primary-btn__icon"></div>
     </button>
+    <div class="dropdown show">
+        <a class="dropdown-toggle btn" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <img class="three-dots" src="../../../assets/icons/more.svg" alt="three dots button">
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a  type="button"
+                role="button"
+                ng-click="$ctrl.onSaveAsXlsx()">
+                Save as XLSX
+            </a>
+            <a  type="button"
+                role="button"
+                ng-click="$ctrl.onSaveAsCsv()">
+                Save as CSV
+            </a>
+        </div>
+    </div>
 </div>
 <table class="table">
     <thead>

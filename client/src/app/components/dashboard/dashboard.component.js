@@ -1,5 +1,6 @@
 import template from './dashboard.component.html';
 import './dashboard.component.scss';
+import XLSX from 'xlsx';
 
 class Controller {
     /** @ngInject */
@@ -52,6 +53,22 @@ class Controller {
         } catch (error) {
             this.message = error.message;
         }
+    }
+
+    onSaveAsXlsx() {
+        //const wb = XLSX.utils.table_to_book(document.querySelector('table'));
+        const ws = XLSX.utils.json_to_sheet(this.slideData);
+
+		const wb = XLSX.utils.book_new();
+		XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+        XLSX.writeFile(wb, "table.xlsx");
+    }
+    
+    onSaveAsCsv() {
+        const wb = XLSX.utils.book_new();
+        const ws = XLSX.utils.json_to_sheet(this.slideData);
+        XLSX.utils.book_append_sheet(wb, ws, 'test');
+        XLSX.writeFile(wb, 'table.csv');
     }
 }
 
