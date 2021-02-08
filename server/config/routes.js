@@ -1,7 +1,8 @@
 
 module.exports.routes = {
 
-  'GET /api/slides/data': { action: 'slide/slide' },
+  'GET /api/slides/data': 'PresentationController.get',
+  'POST /api/slides/add': 'PresentationController.add',
 
   'POST /auth/signup': 'AuthController.signup',
   'POST /auth/signin': 'AuthController.signin',
